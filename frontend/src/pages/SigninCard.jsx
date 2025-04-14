@@ -20,7 +20,7 @@ export const SigninCard = ({
                     </h2>
                     <p className="mt-2 text-center text-sm text-gray-600">
                         Or{' '}
-                        <Link to="/auth/signup" className="font-medium text-indigo-600 hover:text-indigo-500">
+                        <Link to="/users/signup" className="font-medium text-indigo-600 hover:text-indigo-500">
                             create a new account
                         </Link>
                     </p>
