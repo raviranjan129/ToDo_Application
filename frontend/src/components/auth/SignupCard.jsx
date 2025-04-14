@@ -10,7 +10,13 @@ export const SignupCard = ({
     isPending,
     isSuccess
 }) => {
-    
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setSignupForm(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
@@ -38,7 +44,7 @@ export const SignupCard = ({
                                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                                 placeholder="Username"
                                 value={signupForm.username}
-                                onChange={(e)=>setSignupForm({...signupForm,username:e.target.value})}
+                                onChange={handleInputChange}
                             />
                         </div>
                         <div>
@@ -51,7 +57,7 @@ export const SignupCard = ({
                                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                                 placeholder="Email address"
                                 value={signupForm.email}
-                                onChange={(e)=>setSignupForm({...signupForm,email:e.target.value})}
+                                onChange={handleInputChange}
                             />
                         </div>
                         <div>
@@ -64,7 +70,7 @@ export const SignupCard = ({
                                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                                 placeholder="Password"
                                 value={signupForm.password}
-                                onChange={(e)=>setSignupForm({...signupForm,password:e.target.value})}
+                                onChange={handleInputChange}
                             />
                         </div>
                     </div>
@@ -104,4 +110,4 @@ export const SignupCard = ({
             </div>
         </div>
     );
-};
+}; 
