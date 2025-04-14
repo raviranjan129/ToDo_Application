@@ -7,6 +7,10 @@ import apiRouter from './routes/apiRouter.js';
 const PORT = 4000;
 const app = express();
 
+
+app.use(express.json());
+app.use(express.urlencoded());
+
 app.get("/ping", (req, res) => { 
     return res.status(StatusCodes.OK).json({ message: "pong" });
 });
