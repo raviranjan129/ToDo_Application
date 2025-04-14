@@ -1,10 +1,8 @@
-
-
 import { useEffect, useState } from 'react';
-
-import { SignupCard } from './Signup';
-import { useSignup } from '../hooks/apis/useSignup';
 import { useNavigate } from 'react-router-dom';
+import { useSignup } from '../hooks/apis/useSignup';
+import { SignupCard } from './Signup';
+
 
 
 export const SignupContainer = () => {
@@ -13,7 +11,6 @@ export const SignupContainer = () => {
     const [signupForm, setSignupForm] = useState({
         email: '',
         password: '',
-        
         username: ''
     });
 
@@ -25,13 +22,11 @@ export const SignupContainer = () => {
         e.preventDefault();
         console.log('Signup form submitted', signupForm);
 
-        if(!signupForm.email || !signupForm.password  || !signupForm.username) {
+        if(!signupForm.email || !signupForm.password || !signupForm.username) {
             console.error('All fields are required');
             setValidationError({ message: 'All fields are required' });
             return;
         }
-
-       
 
         setValidationError(null);
 
@@ -40,21 +35,18 @@ export const SignupContainer = () => {
             password: signupForm.password,
             username: signupForm.username
         });
-
-
     }
 
     useEffect(() => {
         if(isSuccess) {
             setTimeout(() => {
                 navigate('/users/signin');
-            }, 3000);
+            }, 2000);
         }
-            
     }, [isSuccess, navigate]);
 
     return (
-        <SignupCard 
+        <SignupCard
             error={error}
             isPending={isPending}
             isSuccess={isSuccess}
@@ -64,4 +56,4 @@ export const SignupContainer = () => {
             onSignupFormSubmit={onSignupFormSubmit}
         />
     );
-};
+}; 
