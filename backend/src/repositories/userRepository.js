@@ -19,3 +19,13 @@ export const findUserByEmail = async(email)=>{
         console.log(error);
     }
     }
+
+
+    export const getById=async(id)=>{
+        try {
+            const user=await User.findById(id);
+            return user;
+        } catch (error) {
+            console.log(error);
+        }
+    }

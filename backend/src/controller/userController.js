@@ -3,13 +3,19 @@ import { signinUserService, signUpService } from '../services/userService.js';
 
 export const signup = async (req, res) => {
     try {
-       
+        // Validate request body
+        if (!req.body || Object.keys(req.body).length === 0) {
+            return res.status(StatusCodes.BAD_REQUEST).json({
+                success: false,
+                message: 'Request body is required'
+            });
+        }
 
-        const user = await signUpService(req.body);
+        const result = await signUpService(req.body);
         return res.status(StatusCodes.CREATED).json({
             success: true,
             message: 'User created successfully',
-            data: user
+            data: result
         });
     } catch (error) {
         console.error('Signup error:', error);
@@ -22,13 +28,19 @@ export const signup = async (req, res) => {
 
 export const signin = async (req, res) => {
     try {
-       
+        // Validate request body
+        if (!req.body || Object.keys(req.body).length === 0) {
+            return res.status(StatusCodes.BAD_REQUEST).json({
+                success: false,
+                message: 'Request body is required'
+            });
+        }
 
-        const user = await signinUserService(req.body);
+        const result = await signinUserService(req.body);
         return res.status(StatusCodes.OK).json({
             success: true,
             message: 'User signed in successfully',
-            data: user
+            data: result
         });
     } catch (error) {
         console.error('Signin error:', error);

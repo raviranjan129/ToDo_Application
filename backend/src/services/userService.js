@@ -1,4 +1,6 @@
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import { JWT_SECRET } from '../config/serverConfig.js';
 import { createUser, findUserByEmail } from '../repositories/userRepository.js';
 
 export const signUpService = async (user) => {
@@ -21,8 +23,23 @@ export const signUpService = async (user) => {
         }
 
         const newUser = await createUser(user);
-        console.log(newUser);
-        return newUser;
+        
+        // Generate JWT token
+        const token = jwt.sign(
+            { id: newUser._id, email: newUser.email },
+            JWT_SECRET,
+            { expiresIn: '24h' }
+        );
+
+        // Return user data with token
+        return {
+            user: {
+                id: newUser._id,
+                username: newUser.username,
+                email: newUser.email
+            },
+            token
+        };
     } catch (error) {
         console.log('service error', error);
         throw error;
@@ -57,7 +74,22 @@ export const signinUserService = async (userDetails) => {
             }
         }
 
-        return user;
+        // Generate JWT token
+        const token = jwt.sign(
+            { id: user._id, email: user.email },
+            JWT_SECRET,
+            { expiresIn: '24h' }
+        );
+
+        // Return user data with token
+        return {
+            user: {
+                id: user._id,
+                username: user.username,
+                email: user.email
+            },
+            token
+        };
     } catch (error) {
         throw error;
     }
