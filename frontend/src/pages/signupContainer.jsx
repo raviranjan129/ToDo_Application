@@ -1,13 +1,14 @@
 
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { SignupCard } from './Signup';
 import { useSignup } from '../hooks/apis/useSignup';
+import { useNavigate } from 'react-router-dom';
 
 
 export const SignupContainer = () => {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     
     const [signupForm, setSignupForm] = useState({
         email: '',
@@ -43,14 +44,14 @@ export const SignupContainer = () => {
 
     }
 
-    // useEffect(() => {
-    //     if(isSuccess) {
-    //         setTimeout(() => {
-    //             navigate('/auth/signin');
-    //         }, 3000);
-    //     }
+    useEffect(() => {
+        if(isSuccess) {
+            setTimeout(() => {
+                navigate('/users/signin');
+            }, 3000);
+        }
             
-    // }, [isSuccess, navigate]);
+    }, [isSuccess, navigate]);
 
     return (
         <SignupCard 

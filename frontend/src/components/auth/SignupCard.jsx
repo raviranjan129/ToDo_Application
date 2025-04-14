@@ -27,7 +27,7 @@ export const SignupCard = ({
                     </h2>
                     <p className="mt-2 text-center text-sm text-gray-600">
                         Or{' '}
-                        <Link to="/auth/signin" className="font-medium text-indigo-600 hover:text-indigo-500">
+                        <Link to="/users/signin" className="font-medium text-indigo-600 hover:text-indigo-500">
                             sign in to your account
                         </Link>
                     </p>

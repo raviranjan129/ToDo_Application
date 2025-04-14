@@ -38,8 +38,8 @@ export const SignupContainer = () => {
     useEffect(() => {
         if(isSuccess) {
             setTimeout(() => {
-                navigate('/auth/signin');
-            }, 3000);
+                navigate('/users/signin');
+            }, 2000);
         }
     }, [isSuccess, navigate]);
 
