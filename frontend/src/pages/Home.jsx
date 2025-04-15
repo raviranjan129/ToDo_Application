@@ -11,7 +11,10 @@ const Home = () => {
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-wide text-center">
           Stay Focused, Create Your Todos
         </h1>
-
+ 
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
+        <p>If You want to access TODO page,First you need to register youself by Clicking the Register Button</p>
+        </div>
         
 
         <div className="mt-8">
@@ -21,9 +24,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
-        
-      </div>
+      
     </div>
   );
 };
