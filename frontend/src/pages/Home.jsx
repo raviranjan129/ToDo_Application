@@ -1,7 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   
+    const navigate=useNavigate();
 
   return (
     <div className="bg-gradient-to-r from-purple-400 via-indigo-500 to-blue-500 min-h-screen text-white">
@@ -13,7 +15,7 @@ const Home = () => {
         
 
         <div className="mt-8">
-          <button className="px-6 py-3 bg-yellow-500 hover:bg-yellow-400 rounded-lg text-lg font-semibold shadow-md transition duration-300 ease-in-out transform hover:scale-105 mt-30">
+          <button className="px-6 py-3 bg-yellow-500 hover:bg-yellow-400 rounded-lg text-lg font-semibold shadow-md transition duration-300 ease-in-out transform hover:scale-105 mt-30" onClick={()=>navigate('/todo')}>
             Start Creating Todos
           </button>
         </div>
